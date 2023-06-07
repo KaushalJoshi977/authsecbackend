@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Simple Webpage</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+  <h1>User Details</h1>
+
+  <script th:inline="javascript">
+    var jsonData = /*[[${jsonData}]]*/ '[]';
+    var parsedData = JSON.parse(jsonData);
+    console.log(parsedData);
+    window.onload = function() {
+      var tableBody = document.getElementById('table-body');
+      for (var i = 0; i < parsedData.length; i++) {
+        var data = parsedData[i];
+        var row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${data.id}</td>
+          <td>${data.jan}</td>
+          <td>${data.feb}</td>
+          <td>${data.march}</td>
+          <td>${data.april}</td>
+        `;
+        tableBody.appendChild(row);
+      }
+    };
+  </script>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>January</th>
+        <th>February</th>
+        <th>March</th>
+        <th>April</th>
+      </tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+
+</body>
+</html>

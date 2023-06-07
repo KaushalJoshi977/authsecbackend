@@ -1,0 +1,10 @@
+package com.realnet;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MenuController1 {
+	
+	
+
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logged In</title>
+</head>
+<body>
+    <h1>Welcome to the Logged In Page</h1>
+    <p>Token: <span id="token-value">${token}</span></p>
+    <script>
+        // Example JavaScript code to access the token value
+        var token = document.getElementById("token-value").innerText;
+        console.log("Token:", token);
+        // You can use the token for further operations or send it in API requests
+    </script>
+</body>
+</html>

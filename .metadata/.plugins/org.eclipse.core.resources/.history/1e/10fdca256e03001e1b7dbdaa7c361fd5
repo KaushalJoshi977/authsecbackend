@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu List</title>
+</head>
+<body>
+    <h1>Menu List</h1>
+    <ul>
+        <li th:each="menu : ${menus}">
+            <strong th:text="${menu.menuItemDesc}"></strong>
+            <ul>
+                <li th:each="submenu : ${menu.subMenus}">
+                    <span th:text="${submenu.menuItemDesc}"></span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

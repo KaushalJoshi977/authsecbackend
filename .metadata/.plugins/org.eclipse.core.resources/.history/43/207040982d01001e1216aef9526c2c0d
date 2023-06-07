@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Simple Webpage</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<h1>User Details</h1>
+ <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>January</th>
+                <th>February</th>
+                <th>March</th>
+                <th>April</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="data : ${#strings.replace(jsonData, '[', '').replace(']', '').split('},{')}">
+                <td th:text="${#strings.arraySplit(data, ',')[0].split(':')[1]}"></td>
+                <td th:text="${#strings.arraySplit(data, ',')[1].split(':')[1]}"></td>
+                <td th:text="${#strings.arraySplit(data, ',')[2].split(':')[1]}"></td>
+                <td th:text="${#strings.arraySplit(data, ',')[3].split(':')[1]}"></td>
+                <td th:text="${#strings.arraySplit(data, ',')[4].split(':')[1]}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

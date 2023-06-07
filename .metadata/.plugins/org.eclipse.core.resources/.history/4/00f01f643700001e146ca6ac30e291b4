@@ -1,0 +1,40 @@
+package com.realnet;
+
+import org.springframework.stereotype.*;
+import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.*;
+import lombok.extern.slf4j.Slf4j;
+
+
+@Controller
+public class LoginControlller {
+	
+    @Autowired
+    CachingService cachingService;
+	
+    @GetMapping("clearAllCaches")
+    public void clearAllCaches() {
+        cachingService.evictAllCaches();
+    }
+    @GetMapping("/login1")
+    public String showLoginForm() {
+        return "login1";
+    }
+    @PostMapping("/login1")
+    public String login(@RequestParam String username, @RequestParam String password, Model model) {
+        // Handle the login request
+        if (isValidUser(username, password)) {
+            System.out.print("logged in");
+            return "logged in";
+        } else {
+            model.addAttribute("error", "Invalid username or password");
+            return "login";
+        }
+    }
+    private boolean isValidUser(String username, String password) {
+        // Check if the username and password are valid
+        return username.equals("Kaushal") && password.equals("password");
+    }
+}

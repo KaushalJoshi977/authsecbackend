@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="index::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+	<section>
+		<h2>
+			Item Body
+		</h2>
+		 <div class="container">
+  <div class="row">
+    <h1>List users</h1>
+  </div>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>User login time</th>
+        <th>User Logout time</th>
+        <th>User Session Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023-06-01 10:00:00</td>
+        <td>2023-06-01 16:30:00</td>
+        <td>6 hours 30 minutes</td>
+      </tr>
+      <tr>
+        <td>2023-06-02 09:45:00</td>
+        <td>2023-06-02 13:15:00</td>
+        <td>3 hours 30 minutes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+	</section>
+</body>
+</html>

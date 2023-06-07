@@ -1,0 +1,10 @@
+package com.realnet;
+
+import lombok.Data;
+
+@Data
+public class SubMenu {
+	private String menuItemDesc;
+    private String moduleName;
+    private String main_menu_action_name;
+}

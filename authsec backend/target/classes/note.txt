@@ -1,0 +1,57 @@
+HEADER-LINE FORM : 
+
+GET: http://localhost:9119/api/teacher
+GET: http://localhost:9119/api/teacher/{id}
+PUT: http://localhost:9119/api/teacher/{id}
+DELETE: http://localhost:9119/api/teacher/{id} : NEED TO MODIFY THE INCORRECT ID INPUT ERROR HANDLING
+POST: http://localhost:9119/api/teacher
+===EX1===
+{
+    "name": "niladri",
+    "email": "sen.niladri6@gmail.com",
+    "phoneNumber": 6291,
+    "salary": 1000.0,
+    "students": [{
+        "name": "paku",
+        "depertment": "CSE",
+        "rollNumber": 108
+    }]
+}
+===EX2===:
+{
+    "name": "sandipan",
+    "email": "sandy@gmail.com",
+    "phoneNumber": 9038,
+    "salary": 2000.0,
+    "students": [
+        {
+        "name": "sahil",
+        "depertment": "CSE",
+        "rollNumber": 111
+        },
+        {
+        "name": "tarun",
+        "depertment": "CSE",
+        "rollNumber": 121
+        }
+    ]
+}
+
+===== 6.11.36
+user.java class code changed
+@Getter @Setter private List<Role> role;
+TokenUtil class code change
+
+===== 9.11.20
+1.8
+=== SWAGGER UI ====
+http://localhost:9119/swagger-ui.html
+
+=========
+GIT HUB COMMAND
+=========
+$ git commit -m "your mesage"
+$ git push origin main
+$ git status
+
+$ git push origin main

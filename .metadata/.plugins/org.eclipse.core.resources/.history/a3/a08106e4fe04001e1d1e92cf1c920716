@@ -1,0 +1,15 @@
+package aTrial;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.realnet.SubMenu;
+
+import lombok.Data;
+
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UserMenues {
+	 	private String menuItemDesc;
+	    private List<SubMenu> subMenus;
+}

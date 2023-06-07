@@ -1,0 +1,14 @@
+package com.realnet;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class MenuController1 {
+	
+	@GetMapping("/item1")
+	public String item1call() {
+		return "item1";
+	}
+
+}

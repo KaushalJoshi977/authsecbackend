@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        #content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h1>Menu List</h1>
+        <ul class="nav flex-column">
+            <li class="nav-item dropdown" th:each="menu : ${menus}">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" th:text="${menu.menuItemDesc}"></a>
+                <ul class="dropdown-menu">
+                    <li th:each="submenu : ${menu.subMenus}">
+                        <a class="dropdown-item" href="#" th:text="${submenu.menuItemDesc}"></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+        <!-- Your content goes here -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

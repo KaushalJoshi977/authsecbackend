@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu and Submenu</title>
+  <script th:inline="javascript">
+    var jsonData = /*[[${jsonData}]]*/ '[]';
+    var parsedData = JSON.parse(jsonData);
+    console.log(parsedData);
+
+    window.onload = function() {
+      var tableBody = document.getElementById('table-body');
+      for (var i = 0; i < parsedData.length; i++) {
+        var menu = parsedData[i];
+
+        // Create row for the main menu item
+        var row = document.createElement('tr');
+        row.innerHTML = `
+          <td th:text="${menu.menuItemId.itemSeq}"></td>
+          <td th:text="${menu.menuItemId.menuItemDesc}"></td>
+          <td th:text="${menu.menuItemId.moduleName}"></td>
+        `;
+        tableBody.appendChild(row);
+
+        // Create rows for submenus
+        for (var j = 0; j < menu.subMenus.length; j++) {
+          var submenu = menu.subMenus[j];
+          var submenuRow = document.createElement('tr');
+          submenuRow.innerHTML = `
+            <td th:text="${submenu.menuItemId.itemSeq}"></td>
+            <td th:text="${submenu.menuItemId.menuItemDesc}"></td>
+            <td th:text="${submenu.menuItemId.moduleName}"></td>
+          `;
+          tableBody.appendChild(submenuRow);
+        }
+      }
+    };
+  </script>
+</head>
+<body>
+  <h1>Menu and Submenu</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Item Sequence</th>
+        <th>Item Description</th>
+        <th>Module Name</th>
+      </tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+</body>
+</html>

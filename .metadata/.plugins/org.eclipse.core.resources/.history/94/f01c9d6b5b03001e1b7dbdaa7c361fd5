@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Simple Webpage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="row">
+    <div class="col-3">
+        <h1>Sidebar</h1>
+        <ul class="list-group">
+            <li class="list-group-item" th:each="menu : ${jsonData}">
+                <a th:href="${menu.menuItemId.main_menu_action_name}">
+                    <span th:text="${menu.menuItemId.menuItemDesc}"></span>
+                </a>
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="subMenu : ${menu.subMenus}">
+                        <a th:href="${subMenu.menuItemId.main_menu_action_name}">
+                            <span th:text="${subMenu.menuItemId.menuItemDesc}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-9">
+        <h1>Main Content</h1>
+        <!-- Your main content goes here -->
+    </div>
+</div>
+</body>
+</html>

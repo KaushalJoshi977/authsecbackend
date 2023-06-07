@@ -1,0 +1,5 @@
+package com.realnet.config;
+
+public class AuthenticationComponent {
+
+}

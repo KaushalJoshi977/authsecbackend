@@ -1,0 +1,42 @@
+package com.realnet;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.stereotype.Component;
+
+import com.realnet.config.TokenProvider;
+import com.realnet.users.service1.AppUserServiceImpl;
+
+@Component
+public class AuthenticationComponent {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private TokenProvider tokenProvider;
+
+	@Autowired
+	private AppUserServiceImpl userDetailsService;
+	
+
+	public String authenticateAndGenerateToken(String username, String password) {
+		// Perform authentication
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(username, password));
+
+		// If authentication is successful, generate JWT token
+		if (authentication.isAuthenticated()) {
+			UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+			String token = tokenProvider.generateToken(userDetails);
+			return token;
+		}
+
+		// Return null if authentication fails
+		return null;
+	}
+}
